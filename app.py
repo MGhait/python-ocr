@@ -23,7 +23,8 @@ def ocr():
         img = cv2.imdecode(img_np, cv2.IMREAD_COLOR)
 
         # OCR processing
-        results = reader.readtext(img)  # Use original image instead of grayscale
+	gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        results = reader.readtext(gray_img)  # Use original image instead of grayscale
 
         # Convert coordinates to native Python types
         formatted_results = []
